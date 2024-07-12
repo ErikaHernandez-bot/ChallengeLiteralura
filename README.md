@@ -1,4 +1,4 @@
-<h1 align="center"> Challenge Foro Hub </h1>
+<h1 align="center"> Challenge Literalura </h1>
 
 <h2> Descripcion del proyecto </h2>
 Desarrollar un Catálogo de Libros que ofrezca interacción textual (vía consola) con los usuarios, proporcionando al menos 5 opciones de
@@ -17,21 +17,16 @@ Construyendo la Solicitud (HttpRequest)
 Se usó la clase HttpRequest para configurar y personalizar las solicitudes a la API de libros. 
 
 Construyendo la Respuesta (HttpResponse)
-Finalmente, nos enfocamos en el uso de la interfaz HttpResponse para gestionar las respuestas recibidas de la API. La interfaz 
-HttpResponse en Java ofrece una estructura que permite analizar y acceder a los diferentes elementos de una respuesta HTTP. 
-Al entender cómo trabajar con esta interfaz, podrás extraer información significativa de las respuestas, como códigos de estado, 
+Se usó la interfaz HttpResponse para gestionar las respuestas recibidas de la API. Se puede trabajar con códigos de estado, 
 encabezados y el cuerpo de la respuesta, que normalmente se presenta en formato JSON.
 
-Una vez que se creó la lógica para Crear, Consultar, Actualizar y Eliminar tópicos, esa información se actualizaba en la tabla del mismo nombre con la información id, título, mensaje, fecha de creación, status (estado del tópico), autor, curso.
+<h3>Analizando la respuesta en formato JSON y convirtiendo datos</h3>
 
-<h3>Para el registro de un nuevo tópico</h3>
+Con la biblioteca Jackson, se realizó el mapeo eficiente de los datos JSON a objetos Java, facilitando así la extracción y manipulación de la información con clases como ObjectMapper, para acceder a las distintas propiedades de la respuesta JSON.
+Fue fundamental crear métodos específicos para manejar estos datos (getters, setters and toString())
+Se usaron las anotaciones @JsonIgnoreProperties y @JsonAlias para obtener los atributos deseados del cuerpo de respuesta json.
 
-La API cuenta con un endpoint (punto final) para el registro de tópicos, y acepta solicitudes del tipo POST para la URI /tópicos.
-Los datos del tópico (título, mensaje, autor y curso) son enviados en el cuerpo de la solicitud, en formato JSON.
-Se usó la anotación @RequestBody para recibir correctamente los datos del cuerpo de la solicitud.
-Se usó el método save del JpaRepository para realizar la persistencia de los datos del tópico creado.
-Para la validación de los datos, se utilizó la anotación Java integrada en Spring @Valid.
-La API no debe permitir el registro de tópicos duplicados (con el mismo título y mensaje).
+
 
 <h3>Para el listado de tópicos</h3>
 
